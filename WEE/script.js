@@ -1,15 +1,32 @@
 Vue.component('input-sum', {
-    template:'<input type="number" class="form-control" style="margin-top: 50px;">'
+    template:'<input id="input-sum" type="number" class="form-control" style="margin-top: 50px;">'
 });
 
 Vue.component('expense-button', {
     props: ['name'],
-    template:'<button class="btn btn-success" style="margin: 3px;">{{ name }}</button>'
+    template:'<button v-on:click="addExpense(name)" class="btn btn-success" style="margin: 3px;" type="button">{{ name }}</button>',
+    methods:{
+      addExpense: function(name){
+        var input = document.getElementById('input-sum');
 
+        if (input.value !== ''){
+
+          for (let i = 0; i < app.expenses_data.length; i++) {
+            const element = app.expenses_data[i];
+            if (element["name"] == name){
+              element["y"] = element["y"] + Number(input.value);
+              break;
+            }
+            
+          }
+          chart.series[0].setData(app.expenses_data, true);
+          input.value = ""
+        }
+      }
+    },
 });
 
-var plotComponent = Vue.component('plot', {
-    props: ['data'],
+Vue.component('plot', {
     template:'<div><div id="plot" style="min-width: 310px; height: 400px; margin: 0 auto"></div></div>'
 });
 
@@ -35,11 +52,6 @@ var app = new Vue({
             { name: 'Хобби', y: 0},
         ]
     },
-    methods: {
-        addExpense: function(){
-            this.expenses_data[0]['y'] += 100
-        }
-    }
 });
 
 // Create the chart
