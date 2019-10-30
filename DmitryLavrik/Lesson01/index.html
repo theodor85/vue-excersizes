@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Дмитрий Лаврик. Урок 1. Домашнее задание</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            .result{
+                margin-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id='app'>
+            
+            <div class="container">
+                <form v-show="!showTable">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      <small id="emailHelp" class="form-text text-muted">Укажите здесь ваш е-майл.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="firstname">First name</label>
+                      <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                      <label for="lasttname">Last name</label>
+                      <input type="text" class="form-control" id="lasttname" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Last name</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Your phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Guests</label>
+                        <button v-on:click="addGuest" type="button" class="btn btn-primary" id="guests" placeholder="Your phone">+</button>
+                    </div>
+
+                    <div class="form-group" 
+                        v-for="(guest, index) in guests">
+                        
+                        <label v-bind:for="index" v-on:dblclick="deleteGuest(index)" >Guest {{ index }}</label>
+                        <input type="text" class="form-control" placeholder="Guest's name" 
+                            v-bind:value="guest" 
+                            v-bind:id="index"
+                            v-on:input="changeGuest(index)">
+                    </div>
+
+                    <button type="button" class="btn btn-success">Send form</button>
+                </form>
+                
+                <div class="result" v-show="showTable">
+                    <h2>All done!</h2>
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+
+            </div>
+            
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
