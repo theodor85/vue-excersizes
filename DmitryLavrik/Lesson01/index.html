@@ -17,20 +17,20 @@
                 <form v-show="!showTable">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      <input v-model="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                       <small id="emailHelp" class="form-text text-muted">Укажите здесь ваш е-майл.</small>
                     </div>
                     <div class="form-group">
                       <label for="firstname">First name</label>
-                      <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                      <input v-model="firstname" type="text" class="form-control" id="firstname" placeholder="First Name">
                     </div>
                     <div class="form-group">
                       <label for="lasttname">Last name</label>
-                      <input type="text" class="form-control" id="lasttname" placeholder="Last Name">
+                      <input v-model="lasttname" type="text" class="form-control" id="lasttname" placeholder="Last Name">
                     </div>
                     <div class="form-group">
                         <label for="phone">Last name</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Your phone">
+                        <input v-model="phone" type="text" class="form-control" id="phone" placeholder="Your phone">
                     </div>
                     <div class="form-group">
                         <label for="guests">Guests</label>
@@ -44,10 +44,10 @@
                         <input type="text" class="form-control" placeholder="Guest's name" 
                             v-bind:value="guest" 
                             v-bind:id="index"
-                            v-on:input="changeGuest(index)">
+                            v-model="guests[index]">
                     </div>
 
-                    <button type="button" class="btn btn-success">Send form</button>
+                    <button v-on:click="sendForm" type="button" class="btn btn-success">Send form</button>
                 </form>
                 
                 <div class="result" v-show="showTable">
@@ -55,21 +55,32 @@
                     <table class="table table-bordered">
                         <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td>Email</td>
+                            <td>{{ email }}</td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                            <td>First Name</td>
+                            <td>{{ firstname }}</td>
                         </tr>
                         <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
+                            <td>Last Name</td>
+                            <td>{{ lasttname }}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone</td>
+                            <td>{{ phone }}</td>
+                        </tr>
+                        <tr>
+                            <td>Cuests</td>
+                            <td>
+
+                                <table class="table table-bordered">
+                                    <tr v-for="guest in guests">
+                                        <td>{{ guest }}</td>
+                                    </tr>
+                                </table>
+
+                            </td>
                         </tr>
                         </tbody>
                     </table>

@@ -6,7 +6,7 @@ var app = new Vue({
         firstname: '',
         lasttname: '',
         phone: '',
-        showTable: true,
+        showTable: false,
     },
     methods: {
         addGuest: function(){
@@ -15,8 +15,8 @@ var app = new Vue({
         deleteGuest: function(index){
             this.guests.splice(index, 1)
         },
-        changeGuest: function(index){
-            this.guests[index] = document.getElementById(index).value
+        sendForm: function(){
+            this.showTable = true
         },
     }
 })
