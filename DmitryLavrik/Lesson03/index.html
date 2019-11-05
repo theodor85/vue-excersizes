@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Урок 3. Предыдущий урок сделать через компоненты</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/329265e4bc.js" crossorigin="anonymous"></script>
+        <style>
+            .result{
+                margin-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id='app'>
+            
+            <div class="container" style="margin-top: 50px">
+                
+                <!-- Исходная форма -->
+                <form v-if="showresult">
+                    <div class="progress" style="margin-bottom: 25px">
+                        <difv class="progress-bar" role="progressbar" :style="progress_bar_width" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+
+                    <input_comp v-for="(item, index) in info" :key="index"
+                        :name="item.name"
+                        :value="item.value"
+                        :pattern="item.pattern"
+                        @MyInput="onMyInput"
+                        ></input_comp>
+                    
+
+                    <button v-on:click="sendData" v-bind:disabled="isButtonDisabled" type="button" class="btn btn-success">Send data</button>
+                </form>
+                
+                <!-- Таблица с результатом -->
+                <div class="result">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr v-for="item in info">
+                            <td>{{ item['name'] }}</td>
+                            <td>{{ item['value'] }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+
+            </div>
+            
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
