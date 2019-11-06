@@ -19,7 +19,7 @@
                 <!-- Исходная форма -->
                 <form v-if="showresult">
                     <div class="progress" style="margin-bottom: 25px">
-                        <difv class="progress-bar" role="progressbar" :style="progress_bar_width" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" :style="progress_bar_width" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     
 
@@ -27,7 +27,7 @@
                         :name="item.name"
                         :value="item.value"
                         :pattern="item.pattern"
-                        @MyInput="onMyInput"
+                        @changeinfo="onChangeInfo(index, $event)"
                         ></input_comp>
                     
 
