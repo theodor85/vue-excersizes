@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <test title="Привет! Первый вопрос!"></test>
     <results
       :questions="questions"
       :answers="answers"
@@ -10,6 +11,7 @@
 <script>
 
 import results from './components/Results';
+import test from './components/Test'
 
 export default {
   name: 'app',
@@ -26,7 +28,8 @@ export default {
     }
   },
   components: {
-    results
+    results,
+    test
   },
 }
 
