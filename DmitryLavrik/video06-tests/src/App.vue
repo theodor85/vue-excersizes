@@ -51,7 +51,9 @@ export default {
   },
   methods: {
     onNext(data){
-      this.answers.push(data.answer);
+      
+
+      this.$set(this.answers, data.endedTest, data.answer);
 
       if (this.currentTest+1>=this.quests.length){
         this.showResults = true
