@@ -9,7 +9,7 @@
             </thead>
             <tbody>
                 <tr v-for="(qwestion, index) in questions" :key="index">
-                    <td>{{ qwestion }}</td>
+                    <td>{{ qwestion.title }}</td>
                     <td>{{ answers[index] }}</td>
                 </tr>
             </tbody>

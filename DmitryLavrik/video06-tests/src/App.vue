@@ -1,8 +1,14 @@
 <template>
-  <div id="app">
-    <test title="Привет! Первый вопрос!"></test>
-    <results
-      :questions="questions"
+  <div id="app" class="container">
+    <test 
+      v-if="!showResults"
+      :current-test="currentTest" 
+      :tests="quests"
+      @next="onNext($event)"
+      ></test>
+    
+    <results v-else
+      :questions="quests"
       :answers="answers"
     ></results>
   </div>
@@ -17,13 +23,25 @@ export default {
   name: 'app',
   data () {
     return {
-      questions: [
-        'Сколько будет 2х2?',
-        'Сколько будет 3х5?',
-      ],
-      answers: [
-        'Это будет 4',
-        'А это 15',
+      currentTest: 0,
+      answers: [],
+      showResults: false,
+
+      quests: [
+        {
+          type: 'radio',
+          title: 'Какой тег задаёт ссылку?',
+          answers: [
+            'a', 'div', 'span', 'img',
+          ],
+        },
+        {
+          type: 'checkbox',
+          title: 'Какие из тегов строчные?',
+          answers: [
+            'a', 'div', 'span', 'img',
+          ],
+        },
       ],
     }
   },
@@ -31,25 +49,19 @@ export default {
     results,
     test
   },
-}
+  methods: {
+    onNext(data){
+      this.answers.push(data.answer);
 
-function getQuests(){
-  return [
-    {
-      type: 'radio',
-      title: 'Какой тег задаёт ссылку?',
-      answers: [
-        'a', 'div', 'span', 'img',
-      ],
-    },
-    {
-      type: 'checkbox',
-      title: 'Какие из тегов строчные?',
-      answers: [
-        'a', 'div', 'span', 'img',
-      ],
-    },
-  ];
+      if (this.currentTest+1>=this.quests.length){
+        this.showResults = true
+      }
+      else{
+        this.currentTest += 1;
+      }
+      
+    }
+  }
 }
 
 </script>
