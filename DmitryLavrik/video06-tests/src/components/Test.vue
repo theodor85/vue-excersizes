@@ -1,10 +1,12 @@
 <template>
     <div v-if="render" class="container" style="margin: 20px">
-        <h3>{{ tests[currentTest].title }}</h3>
-        <hr>
-        <form>
 
-            <div v-if="tests[currentTest].type=='checkbox' ">
+        <form> 
+            <transition name="slide" mode="out-in">
+            
+            <div v-if="tests[currentTest].type=='checkbox'" key="qwe">
+                <h3>{{ tests[currentTest].title }}</h3>
+                <hr>
                 <div class="form-check"
                     :key="index"
                     v-for="(answer, index) in tests[currentTest].answers">
@@ -17,7 +19,9 @@
                 </div>
             </div>
 
-            <div v-if="tests[currentTest].type=='radio' ">
+            <div v-if="tests[currentTest].type=='radio'" key="asd">
+                <h3>{{ tests[currentTest].title }}</h3>
+                <hr>
                 <div class="form-check"
                     :key="index"
                     v-for="(answer, index) in tests[currentTest].answers">
@@ -30,6 +34,8 @@
                     </label>
                 </div>
             </div>
+
+            </transition>
             
             <button type="button" class="btn btn-success" 
                 style="margin-top: 10px"
@@ -37,7 +43,8 @@
                 :disabled="btn_disabled"
                 >Далее</button>
         </form>
-
+        
+        
     </div>
 </template>
 
@@ -102,3 +109,40 @@ export default {
     },
 }
 </script>
+
+<style>
+	.slide-enter{
+		
+	}
+
+	.slide-enter-active{
+		animation: test-slideIn 0.5s;
+	}
+
+	.slide-enter-to{
+		
+	}
+
+	.slide-leave{
+		
+	}
+
+	.slide-leave-active{
+		animation: test-slideOut 0.5s;
+	}
+
+	.slide-leave-to{
+		
+	}
+
+	@keyframes test-slideIn{
+		from{transform: translateX(100vw);}
+		to{transform: translateX(0vw);}
+	}
+
+	@keyframes test-slideOut{
+		from{transform: translateX(0px);}
+		to{transform: translateX(-100vw);}
+	}
+
+</style>

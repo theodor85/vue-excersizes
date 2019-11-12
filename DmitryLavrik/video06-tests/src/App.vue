@@ -1,16 +1,20 @@
 <template>
   <div id="app" class="container">
-    <test 
-      v-if="!showResults"
-      :current-test="currentTest" 
-      :tests="quests"
-      @next="onNext($event)"
-      ></test>
-    
-    <results v-else
-      :questions="quests"
-      :answers="answers"
-    ></results>
+    <transition enter-active-class="animated rotateIn"
+      leave-active-class="animated rotateOut"
+      mode="out-in" appear>
+      <test 
+        v-if="!showResults"
+        :current-test="currentTest" 
+        :tests="quests"
+        @next="onNext($event)"
+        ></test>
+      
+      <results v-else
+        :questions="quests"
+        :answers="answers"
+      ></results>
+    </transition>
   </div>
 </template>
 
@@ -51,8 +55,6 @@ export default {
   },
   methods: {
     onNext(data){
-      
-
       this.$set(this.answers, data.endedTest, data.answer);
 
       if (this.currentTest+1>=this.quests.length){
@@ -68,3 +70,39 @@ export default {
 
 </script>
 
+<style>
+	.boom-enter{
+		
+	}
+
+	.boom-enter-active{
+		animation: slideIn 0.5s;
+	}
+
+	.boom-enter-to{
+		
+	}
+
+	.boom-leave{
+		
+	}
+
+	.boom-leave-active{
+		animation: slideOut 0.5s;
+	}
+
+	.boom-leave-to{
+		
+	}
+
+	@keyframes slideIn{
+		from{transform: translateY(-100vw);}
+		to{transform: translateY(0px);}
+	}
+
+	@keyframes slideOut{
+		from{transform: translateY(0px);}
+		to{transform: translateY(100vw);}
+	}
+
+</style>
