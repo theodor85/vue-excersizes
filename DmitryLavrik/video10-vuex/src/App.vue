@@ -1,31 +1,40 @@
 <template>
   <div id="app" class="container" style="margin: 50px">
-    <header username="username"></header>
-    <statusbar></statusbar>
+    <appheader :username="username"></appheader>
+    <progressbar :percentage="readyPercentage"></progressbar>
     <appform v-if="!showresult"></appform>
-    <result v-else></result>
+    <result></result>
   </div>
 </template>
 
 <script>
 
-import header from './components/Header';
+import appheader from './components/AppHeader';
 import appform from './components/AppForm';
 import result from './components/Result';
+import progressbar from './components/Progressbar';
+
+import {mapGetters} from 'vuex';
 
 export default {
   name: 'app',
   components: {
-    header,
+    appheader,
     appform,
     result,
+    progressbar,
   },
   data () {
     return {
-      showresult: true,
-      username: '',
+      showresult: false,
+      username: 'QWerty',
     }
   },
+  computed: {
+    ...mapGetters([
+				'readyPercentage',
+			]),
+  }
 }
 </script>
 

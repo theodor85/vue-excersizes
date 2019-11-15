@@ -1,6 +1,6 @@
 <template>
     <div class="result">
-        <table class="table table-bordered">
+        <table class="table table-bordered" style="margin-top: 25px">
             <tbody>
             <tr v-for="(item, index) in info" :key="index">
                 <td>{{ item['name'] }}</td>
@@ -12,11 +12,18 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
     data () {
         return {
-            info: [],
         }
+    },
+
+    computed: {
+        ...mapGetters([
+			'info',
+		]),
     },
 }
 </script>

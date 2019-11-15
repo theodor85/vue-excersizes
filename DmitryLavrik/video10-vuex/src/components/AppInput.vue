@@ -1,8 +1,12 @@
 <template>
     <div class="form-group">
         <label for="name">{{ name }}</label>
-        <i v-if="showIcon" :class="iconClass" :style="iconStyle"></i>
-        <input @input="onInput" type="text" class="form-control" :id="name" :value="value">
+        <i v-if="showIcon" 
+            :class="iconClass" 
+            :style="iconStyle"></i>
+        <input type="text" class="form-control"
+            @input="onInput"
+            :id="name" :value="value">
     </div>
 </template>
 
@@ -26,6 +30,7 @@ export default {
     
     computed: {
         iconClass() {
+            console.log(this.pattern.test( this.value ))
             return this.pattern.test( this.value ) ?  "fas fa-check-circle" : "fas fa-exclamation-circle"
         },
         iconStyle() {
