@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="container" style="margin: 50px">
-    <appheader :username="username"></appheader>
-    <progressbar :percentage="readyPercentage"></progressbar>
-    <appform v-if="!showresult"></appform>
-    <result></result>
+    <appheader :username="name"></appheader>
+    <progressbar v-if="!showresult" :percentage="readyPercentage"></progressbar>
+    <appform v-if="!showresult" @send="onSend"></appform>
+    <result v-else></result>
   </div>
 </template>
 
@@ -27,13 +27,18 @@ export default {
   data () {
     return {
       showresult: false,
-      username: 'QWerty',
     }
   },
   computed: {
     ...mapGetters([
-				'readyPercentage',
+        'readyPercentage',
+        'name',
 			]),
+  },
+  methods: {
+    onSend(){
+      this.showresult = true;
+    },
   }
 }
 </script>

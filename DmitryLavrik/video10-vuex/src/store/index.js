@@ -51,6 +51,16 @@ export const store = new Vuex.Store({
                     result += Number(1 / state.info.length * 100);
             }   
             return result;
+        },
+        name(state){
+            return state.info[0].value;
+        }
+    },
+
+    mutations: {
+        setValue(state, item){
+            state.info[item.index].value = item.value;
+            state.info[item.index].status = item.status;
         }
     }
 });

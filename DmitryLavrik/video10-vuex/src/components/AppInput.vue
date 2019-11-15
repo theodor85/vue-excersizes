@@ -6,7 +6,8 @@
             :style="iconStyle"></i>
         <input type="text" class="form-control"
             @input="onInput"
-            :id="name" :value="value">
+            :id="name" 
+            :value="value">
     </div>
 </template>
 
@@ -16,26 +17,24 @@ export default {
     data(){
         return {
             showIcon: false,
+            iconClass: '',
+            iconStyle: '',
         }
     },
     methods: {
         onInput(e){
-            this.$emit('changeinfo', {
+            this.iconStyle = this.pattern.test( e.target.value ) ?  "color: green" : "color: red";
+            this.iconClass = this.pattern.test( e.target.value ) ?  "fas fa-check-circle" : "fas fa-exclamation-circle";
+            this.showIcon = true;
+            this.$emit('changefield', {
                 new_value: e.target.value,
                 is_valid: this.pattern.test( e.target.value ),
             });
-            this.showIcon = true
+            
         },
     },
     
     computed: {
-        iconClass() {
-            console.log(this.pattern.test( this.value ))
-            return this.pattern.test( this.value ) ?  "fas fa-check-circle" : "fas fa-exclamation-circle"
-        },
-        iconStyle() {
-            return this.pattern.test( this.value ) ?  "color: green" : "color: red"
-        },
     }
     
 }

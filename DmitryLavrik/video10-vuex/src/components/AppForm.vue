@@ -6,7 +6,8 @@
                 :name="item['name']"
                 :value="item['value']"
                 :pattern="item['pattern']"
-                :key="index"></appinput>
+                :key="index"
+                @changefield="onChangeField(index, $event)"></appinput>
 
             <button type="button" class="btn btn-success"
                 @click="sendData" 
@@ -35,16 +36,29 @@ export default {
 
     computed: {
         ...mapGetters([
-				'info',
-			]),
+            'info',
+            'readyPercentage',
+		]),
         isButtonDisabled(){
-            return false;
+            if (this.readyPercentage==100)
+                return false;
+            else return true;
         }
     },
 
     methods:{
         sendData(){
-            alert('OK')
+            this.$emit('send', {
+
+            });
+        },
+        onChangeField(index, data){
+
+            this.$store.commit('setValue', {
+					index: index,
+                    value: data['new_value'],
+                    status: data.is_valid,
+				});
         }
     }
 }
