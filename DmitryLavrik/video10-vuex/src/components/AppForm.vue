@@ -9,9 +9,9 @@
                 :key="index"
                 @changefield="onChangeField(index, $event)"></appinput>
 
-            <button type="button" class="btn btn-success"
+            <button type="button" :class="btnClass"
                 @click="sendData" 
-                :disabled="isButtonDisabled">Send data</button>
+                :disabled="isButtonDisabled">{{ btnLabel}}</button>
         </form> 
         
     </div> 
@@ -30,7 +30,8 @@ export default {
     
     data () {
         return {
-            
+            btnClass: 'btn btn-primary',
+            btnLabel: 'Send data',
         }
     },
 
@@ -43,14 +44,14 @@ export default {
             if (this.readyPercentage==100)
                 return false;
             else return true;
-        }
+        },
     },
 
     methods:{
         sendData(){
-            this.$emit('send', {
-
-            });
+            this.btnClass = 'btn btn-secondary';
+            this.btnLabel = 'Loading...',
+            this.$store.dispatch('send');
         },
         onChangeField(index, data){
 

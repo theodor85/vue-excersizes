@@ -2,7 +2,7 @@
   <div id="app" class="container" style="margin: 50px">
     <appheader :username="name"></appheader>
     <progressbar v-if="!showresult" :percentage="readyPercentage"></progressbar>
-    <appform v-if="!showresult" @send="onSend"></appform>
+    <appform v-if="!showresult"></appform>
     <result v-else></result>
   </div>
 </template>
@@ -26,19 +26,16 @@ export default {
   },
   data () {
     return {
-      showresult: false,
     }
   },
   computed: {
     ...mapGetters([
         'readyPercentage',
         'name',
+        'showresult',
 			]),
   },
   methods: {
-    onSend(){
-      this.showresult = true;
-    },
   }
 }
 </script>

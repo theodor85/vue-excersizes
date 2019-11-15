@@ -37,6 +37,8 @@ export const store = new Vuex.Store({
                 status: false,
             },
         ],
+        username: '',
+        showresult: false,
     },
     
     getters: {
@@ -53,7 +55,10 @@ export const store = new Vuex.Store({
             return result;
         },
         name(state){
-            return state.info[0].value;
+            return state.username;
+        },
+        showresult(state){
+            return state.showresult;
         }
     },
 
@@ -62,5 +67,17 @@ export const store = new Vuex.Store({
             state.info[item.index].value = item.value;
             state.info[item.index].status = item.status;
         }
-    }
+    },
+
+    actions: {
+		send(store, payload){
+			
+			setTimeout(() => {
+				console.log(payload);
+                store.state.username = store.state.info[0].value;
+                store.state.showresult = true;
+			}, 3000);
+		}
+	},
+
 });
