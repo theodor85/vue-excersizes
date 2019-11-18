@@ -14,7 +14,7 @@ export default {
 
 			for(let i = 0; i < state.items.length; i++){
 				let product = state.items[i];
-				itemsMap[product.id_product] = product;
+				itemsMap[product.id] = product;
 			}
 
 			return itemsMap;

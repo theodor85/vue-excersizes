@@ -12,13 +12,13 @@ export default {
 		}
 	},
 	mutations: {
-		add(state, id_product){
-			if(state.products.indexOf(id_product) === -1){
-				state.products.push(id_product);
+		add(state, id){
+			if(state.products.indexOf(id) === -1){
+				state.products.push(id);
 			}
 		},
-		remove(state, id_product){
-			let pos = state.products.indexOf(id_product);
+		remove(state, id){
+			let pos = state.products.indexOf(id);
 
 			if(pos !== -1){
 				state.products.splice(pos, 1);
@@ -26,11 +26,11 @@ export default {
 		}
 	},
 	actions: {
-		add(store, id_product){
-			store.commit('add', id_product);
+		add(store, id){
+			store.commit('add', id);
 		},
-		remove(store, id_product){
-			store.commit('remove', id_product);
+		remove(store, id){
+			store.commit('remove', id);
 		}
 	}
 };
