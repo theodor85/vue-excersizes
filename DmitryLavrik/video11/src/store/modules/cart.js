@@ -23,6 +23,11 @@ export default {
 			if(pos !== -1){
 				state.products.splice(pos, 1);
 			}
+		},
+		clear(state){
+			while(state.products.length > 0) {
+				state.products.pop();
+			}
 		}
 	},
 	actions: {
@@ -31,6 +36,9 @@ export default {
 		},
 		remove(store, id){
 			store.commit('remove', id);
+		},
+		clear(store){
+			store.commit('clear');
 		}
 	}
 };
