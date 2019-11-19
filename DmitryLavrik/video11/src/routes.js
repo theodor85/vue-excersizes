@@ -7,6 +7,7 @@ import ProductList from './components/ProductsList';
 import Product from './components/Product';
 import Cart from './components/Cart';
 import E404 from './components/E404';
+import Checkout from './components/Checkout';
 
 import {store} from './store';
 
@@ -31,6 +32,10 @@ const routes = [
 	{
 		path: '/cart',
 		component: Cart
+	},
+	{
+		path: '/checkout',
+		component: Checkout
 	},
 	{
 		path: '*',

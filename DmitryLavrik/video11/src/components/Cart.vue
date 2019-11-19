@@ -7,7 +7,7 @@
 			Your cart is empty
 		</div>
 		<template v-else>
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>Title</th>
@@ -19,6 +19,10 @@
 						:key="index">
 						<td>{{ product.title }}</td>
 						<td>{{ product.price }}</td>
+					</tr>
+					<tr class="bg-primary">
+						<td>Total</td>
+						<td>{{ total }}</td>
 					</tr>
 				</tbody>	
 			</table>
@@ -55,6 +59,14 @@
 			},
 			empty(){
 				return this.products.length === 0;
+			},
+			total(){
+				let sum = 0;
+				for (let index = 0; index < this.products.length; index++) {
+					const element = this.products[index];
+					sum += element.price;
+				}
+				return sum
 			}
 		},
 		methods: {

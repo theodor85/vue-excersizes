@@ -9,7 +9,7 @@ export default {
 		},
 		cnt(state){
 			return state.products.length;
-		}
+		},
 	},
 	mutations: {
 		add(state, id){
@@ -39,6 +39,6 @@ export default {
 		},
 		clear(store){
 			store.commit('clear');
-		}
+		},
 	}
 };
