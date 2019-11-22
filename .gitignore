@@ -1,3 +1,5 @@
 .vscode/launch.json
 DmitryLavrik/Материалы
-DmitryLavrik/django-server
+DmitryLavrik/django-server/env
+*.pyc
+DmitryLavrik/django-server/vuebackend/db.sqlite3
