@@ -41,12 +41,12 @@ export default {
 	},
 	methods: {
 		sendData(data){
-			orderData = {
+			this.sendOrder({
 				name: data.name,
 				phone: data.phone,
 				email: data.email,
 				products: this.products,
-			}
+			});
 		},
 		...mapActions('orders', {
 			sendOrder: 'sendOrder',

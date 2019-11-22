@@ -18,7 +18,8 @@ export default {
 	},
 	actions: {
 		sendOrder(store, orderData){
-			store.commit('addOrder', orderData);
+			console.log(orderData);
+			//store.commit('addOrder', orderData);
 			// Vue.http.post('orders/', orderData)
 			// 	.then(successCallback, errorCallback);
 		},
