@@ -10,6 +10,14 @@ export default {
 		cnt(state){
 			return state.products.length;
 		},
+		total(state){
+			let sum = 0;
+			for (let index = 0; index < state.products.length; index++) {
+				const element = state.products[index];
+				sum += element.price;
+			}
+			return sum
+		},
 	},
 	mutations: {
 		add(state, id){

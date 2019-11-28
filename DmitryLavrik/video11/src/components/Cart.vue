@@ -37,7 +37,7 @@ export default {
 			productsAll: 'items'
 		}),
 		...mapGetters('cart', {
-			productsInCart: 'products'
+			productsInCart: 'products',
 		}),
 		products(){
 			return this.productsAll.filter((elem) => {
@@ -47,14 +47,6 @@ export default {
 		empty(){
 			return this.products.length === 0;
 		},
-		total(){
-			let sum = 0;
-			for (let index = 0; index < this.products.length; index++) {
-				const element = this.products[index];
-				sum += element.price;
-			}
-			return sum
-		}
 	},
 	methods: {
 		onOrder(){

@@ -37,6 +37,7 @@ export default {
 		...mapGetters('cart', {
 			products: 'products',
 			cnt: 'cnt',
+			total: 'total',
 		}),
 	},
 	methods: {
@@ -45,7 +46,7 @@ export default {
 				name: data.name,
 				phone: data.phone,
 				email: data.email,
-				products: this.products,
+				total: this.total,
 			});
 		},
 		...mapActions('orders', {

@@ -13,6 +13,10 @@ export default {
 			{
 				url: '/checkout',
 				text: 'Order Now'
+			},
+			{
+				url: '/my-orders',
+				text: 'My orders'
 			}
 		]
 	},
