@@ -40,7 +40,11 @@ const routes = [
 	},
 	{
 		path: '/my-orders',
-		component: MyOrders
+		component: MyOrders,
+		beforeEnter(from, to, next){
+			store.dispatch('orders/getOrders');
+			next();
+		}
 	},
 	{
 		path: '*',
