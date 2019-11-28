@@ -30,14 +30,9 @@
 				productsAll: 'items'
 			}),
 			...mapGetters('cart', {
-				productsInCart: 'products',
+				products: 'products',
 				total: 'total',
 			}),
-			products(){
-				return this.productsAll.filter((elem) => {
-					return this.productsInCart.indexOf(elem.id) !== -1;
-				});
-			},
 			empty(){
 				return this.products.length === 0;
 			},

@@ -13,7 +13,7 @@
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Email</th>
-                        <th>Products</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -38,6 +38,7 @@ export default {
 		}),
 		...mapGetters('cart', {
 			productsInCart: 'products',
+			cnt: 'cnt',
 		}),
 		products(){
 			return this.productsAll.filter((elem) => {
@@ -45,7 +46,7 @@ export default {
 			});
 		},
 		empty(){
-			return this.products.length === 0;
+			return this.cnt == 0;
 		},
 	},
 	methods: {

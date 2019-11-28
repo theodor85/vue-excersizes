@@ -48,6 +48,7 @@ export default {
 				email: data.email,
 				total: this.total,
 			});
+			this.$router.push('/my-orders');
 		},
 		...mapActions('orders', {
 			sendOrder: 'sendOrder',

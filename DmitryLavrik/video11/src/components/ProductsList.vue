@@ -9,8 +9,8 @@
 				    <a>{{ product.title }}</a>
 				</router-link>
 				<div>{{ product.price }}</div>
-				<button v-if="inCart.indexOf(product.id) === -1"
-						@click="addToCart(product.id)"
+				<button v-if="!productIsInCart(product.id)"
+						@click="addToCart(product)"
 						class="btn btn-primary"
 						>
 					Add to cart
@@ -46,7 +46,16 @@
 			...mapActions('cart', {
 				addToCart: 'add',
 				removeFromCart: 'remove'
-			})
+			}),
+			productIsInCart(id){
+				for (let i = 0; i < this.inCart.length; i++) {
+					const element = this.inCart[i];
+					if (element.id == id) {
+						return true;
+					}
+				}
+				return false;
+			},
 		}
 	}
 </script>

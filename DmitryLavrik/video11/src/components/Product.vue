@@ -6,18 +6,6 @@
 		<div class="alert alert-success">
 			{{ product.price }}
 		</div>
-		<button v-if="inCart.indexOf(product.id) === -1"
-						@click="addToCart(product.id)"
-						class="btn btn-primary"
-						>
-					Add to cart
-				</button>
-				<button v-else
-						@click="removeFromCart(product.id)"
-						class="btn btn-warning"
-				>
-					Remove from cart
-				</button>
 	</div>
 </template>
 
